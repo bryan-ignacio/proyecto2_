@@ -45,3 +45,9 @@ if __name__ == '__main__':
     lista_clientes.insertar_inicio(c4)
     lista_clientes.insertar_inicio(c5)
     lista_clientes.imprimir()
+    lista_clientes.buscar_node_cliente("3059284736104")
+    lista_clientes.modificar_node_cliente("123", "123456789",
+                                          "NewNombre", "NewApellido",
+                                          "M", "12345678",
+                                          "Residenciales Nueva Direccion")
+    lista_clientes.imprimir()

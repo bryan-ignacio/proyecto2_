@@ -59,9 +59,35 @@ class ListaClientes:
 
         print(" --> ".join(elementos))
 
+    def buscar_node_cliente(self, dpi_cliente):
+        if self.esta_vacia():
+            print("La lista esta vacia.")
+        else:
+            node_cliente: Cliente
+            actual = self.__primero
+            while True:
+                node_cliente = actual.get_cliente()
+                if node_cliente.get_dpi() == dpi_cliente:
+                    print("se encontro el cliente", node_cliente.get_dpi())
+                    return actual
+                actual = actual.get_siguiente()
+                if actual == self.__primero:
+                    break
+            return None
 
-    def buscar_node_cliente(self):
-        pass
+    def modificar_node_cliente(self, dpi_cliente, new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion):
+        node_cliente:NodeCliente = self.buscar_node_cliente(dpi_cliente)
+        if node_cliente is None:
+            print("No se encontro el cliente", dpi_cliente)
+            return False
+        else:
+            node_cliente.get_cliente().set_dpi(new_dpi)
+            node_cliente.get_cliente().set_nombres(new_nombres)
+            node_cliente.get_cliente().set_apellidos(new_apellidos)
+            node_cliente.get_cliente().set_genero(new_genero)
+            node_cliente.get_cliente().set_telefono(new_telefono)
+            node_cliente.get_cliente().set_direccion(new_direccion)
+            return True
 
     def eliminar_inicio(self):
         pass
@@ -70,6 +96,7 @@ class ListaClientes:
         pass
 
     def eliminar_node_cliente(self):
+
         pass
 
     def generar_reporte(self):
