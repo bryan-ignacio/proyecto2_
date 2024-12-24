@@ -75,8 +75,9 @@ class ListaClientes:
                     break
             return None
 
-    def modificar_node_cliente(self, dpi_cliente, new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion):
-        node_cliente:NodeCliente = self.buscar_node_cliente(dpi_cliente)
+    def modificar_node_cliente(self, dpi_cliente, new_dpi, new_nombres, new_apellidos, new_genero, new_telefono,
+                               new_direccion):
+        node_cliente: NodeCliente = self.buscar_node_cliente(dpi_cliente)
         if node_cliente is None:
             print("No se encontro el cliente", dpi_cliente)
             return False
@@ -90,7 +91,16 @@ class ListaClientes:
             return True
 
     def eliminar_inicio(self):
-        pass
+        if self.esta_vacia():
+            print("La lista esta vacia, no se puede eliminar")
+        elif self.__primero == self.__ultimo:
+            self.__primero = None
+            self.__ultimo = None
+        else:
+            temp: NodeCliente = self.__primero.get_siguiente()
+            self.__ultimo.set_siguiente(temp)
+            temp.set_anterior(self.__ultimo)
+            self.__primero = temp
 
     def eliminar_final(self):
         pass
