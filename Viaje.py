@@ -40,4 +40,3 @@ class Viaje:
         return (f'Viaje->[origen: {self.__origen}, destino: {self.__destino}, \n'
                 f'fecha: {self.__fecha}, vehiculo: {self.__vehiculo}, camino: {self.__camino}]')
 
-    
