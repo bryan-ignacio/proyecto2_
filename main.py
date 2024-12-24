@@ -14,8 +14,11 @@ if __name__ == '__main__':
 
         LLEGADA RAPIDITO
 
-         1) Cargar Clientes.
-         2) Salir.
+         1) Carga Masiva De Clientes.
+         2) Carga Masiva De Vehiculos.
+         3) Carga Masiva De Rutas.
+         4) Implementacion Viajes.(Tarea)
+         5) Salir.
           ''')
         option = int(input("\t> Selecciona una opcion:"))
         if option == 1:
@@ -32,6 +35,14 @@ if __name__ == '__main__':
                             particion_comas[4], particion_comas[5].strip(';')))
             print("\n")
             lista_clientes.generar_reporte()
-        elif option == 2:
+        if option == 2:
+            print("Carga Masiva De Vehiculos.")
+            pass
+        if option == 3:
+            print("Carga Masiva De Rutas.")
+            pass
+        if option == 4:
+            pass
+        elif option == 5:
             print('Finalizo el programa.')
             exit = True
