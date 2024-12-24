@@ -1,6 +1,7 @@
 digraph {
 	rankdir=LR
-	node [shape=record]
+	node [color=black fillcolor="#bfdbf7" fontcolor=black shape=record style=filled]
+	edge [color="#f94144" fontcolor=black style=solid]
 	node0123456789090 [label="DPI: 0123456789090\nNombre: Isabel Cristina Herrera Villanueva"]
 	node0123456789090 -> node9012345678989 [dir=both]
 	node9012345678989 [label="DPI: 9012345678989\nNombre: Ricardo José Delgado Paredes"]

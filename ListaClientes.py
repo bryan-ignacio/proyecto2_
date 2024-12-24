@@ -164,16 +164,23 @@ class ListaClientes:
             return None
 
     def generar_reporte(self):
-        # este metodo debe generar el archivo .dot y mostrar la grafica de la lista circular doblemente enlazada
-        # abrir automaticamente la imagen de la grafica creada.
+        # Este métod debe generar el archivo .dot y mostrar la gráfica de la lista circular doblemente enlazada
+        # Abrir automáticamente la imagen de la gráfica creada.
         if self.esta_vacia():
             print("La lista está vacía. No se puede generar el reporte.")
             return
 
-            # Crear el grafo
+        # Crear el grafo
         dot = Digraph(format='png')
-        dot.attr(rankdir='LR')  # Disposición horizontal
-        dot.attr('node', shape='record')
+
+        # Establecer la disposición horizontal
+        dot.attr(rankdir='LR')
+        # Estilo de nodos: forma y color
+        dot.attr('node', shape='record', style='filled', fillcolor='#bfdbf7', fontcolor='black',
+                 color='black')  # Nodo amarillo
+
+        # Estilo de las aristas: color y estilo
+        dot.attr('edge', color='#f94144', fontcolor='black', style='solid')  # Aristas verdes
 
         actual = self.__primero
         while True:
@@ -188,7 +195,7 @@ class ListaClientes:
             siguiente_id = f'node{siguiente.get_cliente().get_dpi()}'
             anterior_id = f'node{anterior.get_cliente().get_dpi()}'
 
-            # Conexión hacia el siguiente nodo
+            # Conexión hacia el siguiente nodo (circular)
             dot.edge(node_id, siguiente_id, dir='both')
             actual = siguiente
 
