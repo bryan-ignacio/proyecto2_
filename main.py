@@ -1,3 +1,4 @@
+from ArbolBVehiculos import ArbolBVehiculos
 from Cliente import Cliente
 from ListaClientes import ListaClientes
 from NodeCliente import NodeCliente
@@ -6,6 +7,7 @@ from Vehiculo import Vehiculo
 if __name__ == '__main__':
 
     lista_clientes = ListaClientes()
+    arbol_vehiculos = ArbolBVehiculos(5)
 
     ruta_archivo_clientes = "carga_clientes.txt"
     ruta_archivo_vehiculos = "carga_vehiculos.txt"
@@ -26,9 +28,7 @@ if __name__ == '__main__':
         if option == 1:
             archivo = open(ruta_archivo_clientes, 'r')
             contenido_archivo = archivo.read()
-            # print(contenido_archivo)
             particion_linea = contenido_archivo.split('\n')
-            # print(particion_linea)
             for index in range(len(particion_linea)):
                 particion_comas = particion_linea[index].split(',')
                 lista_clientes.insertar_inicio(
@@ -43,10 +43,13 @@ if __name__ == '__main__':
             particion_linea_dos = contenido_archivo_dos.split('\n')
             for index in range(len(particion_linea_dos)):
                 particion_puntocoma = particion_linea_dos[index].split(':')
-                print(particion_puntocoma[0])
-                print(particion_puntocoma[1])
-                print(particion_puntocoma[2])
-                print(particion_puntocoma[3].strip(';'))
+                arbol_vehiculos.insertar_valor(
+                    Vehiculo(particion_puntocoma[0],
+                             particion_puntocoma[1],
+                             particion_puntocoma[2],
+                             particion_puntocoma[3].strip(';'))
+                )
+                arbol_vehiculos.generar_reporte()
             print("\n")
         if option == 3:
             print("Carga Masiva De Rutas.")

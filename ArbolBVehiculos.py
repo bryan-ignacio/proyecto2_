@@ -51,11 +51,16 @@ class ArbolBVehiculos:
             hijo.hijos = hijo.hijos[0:posicion_media + 1]
 
     def imprimir_usuario(self) -> str:
-        dot: str = "digraph G {\n\tbgcolor=\"#1A1A1A\";\n\t"
-        dot += "fontcolor=white;\n\tnodesep=0.5;\n\tsplines=false\n\t"
-        dot += "node [shape=record width=1.2 style=filled fillcolor=\"#313638\""
-        dot += "fontcolor=white color=transparent];\n\t"
-        dot += "edge [fontcolor=white color=\"#0070C9\"];\n\t"
+        dot: str = "digraph G {\n\t"
+        # Cambiar el color de fondo del gráfico
+        dot += "bgcolor=\"#ffffff\";\n\t"  # Fondo oscuro
+        # Cambiar el color del texto (fuentes)
+        dot += "fontcolor=black;\n\t"
+        # Cambiar el color de las líneas entre nodos (bordes)
+        dot += "edge [fontcolor=white color=\"#FF6347\"];\n\t"  # Color de los bordes (rojo)
+        # Cambiar el estilo de los nodos (forma, color de fondo, color de borde)
+        dot += "node [shape=record width=1.2 style=filled fillcolor=\"#bfdbf7\" fontcolor=black color=\"#e1e5f2\"];\n\t"  # Nodo verde
+        # Aquí estamos llamando al métod imprimir() para obtener la estructura del árbol
         dot += self.imprimir(self.raiz)
         dot += "\n}"
         return dot
@@ -66,9 +71,10 @@ class ArbolBVehiculos:
         contador: int = 0
         for item in raiz.claves:
             if contador == len(raiz.claves) - 1:
-                arbol += f"<f{contador}>|{item}|<f{contador + 1}>"
+                # Imprimir solo la placa del vehículo
+                arbol += f"<f{contador}>|{item.get_placa()}|<f{contador + 1}>"
                 break
-            arbol += f"<f{contador}>|{item}|"
+            arbol += f"<f{contador}>|{item.get_placa()}|"
             contador += 1
         arbol += "\"];\n\t"
         contador: int = 0
