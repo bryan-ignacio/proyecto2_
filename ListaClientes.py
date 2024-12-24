@@ -119,8 +119,31 @@ class ListaClientes:
                 if temp == self.__primero:
                     break
 
-    def eliminar_node_cliente(self):
-        pass
+    def eliminar_node_cliente(self, dpi_cliente):
+        if self.esta_vacia():
+            print("La lista esta vacia, no se puede eliminar")
+            return
+
+        if self.__primero.get_cliente().get_dpi() == dpi_cliente:
+            self.eliminar_inicio()
+            return
+
+        if self.__ultimo.get_cliente().get_dpi() == dpi_cliente:
+            self.eliminar_final()
+            return
+
+        node_cliente: Cliente
+        actual: NodeCliente = self.__primero
+        node_anterior: NodeCliente = None
+        while True:
+            node_cliente = actual.get_cliente()
+            if node_cliente.get_dpi() == dpi_cliente:
+                node_anterior.set_siguiente(actual.get_siguiente())
+                return
+            node_anterior = actual
+            actual = actual.get_siguiente()
+            if actual == self.__primero:
+                break
 
     def generar_reporte(self):
         pass

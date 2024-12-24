@@ -45,6 +45,5 @@ if __name__ == '__main__':
     lista_clientes.insertar_inicio(c4)
     lista_clientes.insertar_inicio(c5)
     lista_clientes.imprimir()
-    lista_clientes.eliminar_final()
-    lista_clientes.eliminar_final()
+    lista_clientes.eliminar_node_cliente("3905617392403")
     lista_clientes.imprimir()
