@@ -8,6 +8,8 @@ if __name__ == '__main__':
     lista_clientes = ListaClientes()
 
     ruta_archivo_clientes = "carga_clientes.txt"
+    ruta_archivo_vehiculos = "carga_vehiculos.txt"
+
     exit = False
     while exit == False:
         print(f'''
@@ -36,8 +38,16 @@ if __name__ == '__main__':
             print("\n")
             lista_clientes.generar_reporte()
         if option == 2:
-            print("Carga Masiva De Vehiculos.")
-            pass
+            archivo_dos = open(ruta_archivo_vehiculos, 'r')
+            contenido_archivo_dos = archivo_dos.read()
+            particion_linea_dos = contenido_archivo_dos.split('\n')
+            for index in range(len(particion_linea_dos)):
+                particion_puntocoma = particion_linea_dos[index].split(':')
+                print(particion_puntocoma[0])
+                print(particion_puntocoma[1])
+                print(particion_puntocoma[2])
+                print(particion_puntocoma[3].strip(';'))
+            print("\n")
         if option == 3:
             print("Carga Masiva De Rutas.")
             pass
