@@ -1,5 +1,6 @@
 from Cliente import Cliente
 from ListaClientes import ListaClientes
+from NodeCliente import NodeCliente
 from Vehiculo import Vehiculo
 
 if __name__ == '__main__':
@@ -45,5 +46,6 @@ if __name__ == '__main__':
     lista_clientes.insertar_inicio(c4)
     lista_clientes.insertar_inicio(c5)
     lista_clientes.imprimir()
-    lista_clientes.eliminar_node_cliente("3905617392403")
-    lista_clientes.imprimir()
+    lista_clientes.generar_reporte()
+    # node_encontado:NodeCliente = lista_clientes.mostrar_info_cliente("3748291048602")
+    # print(node_encontado.get_cliente())

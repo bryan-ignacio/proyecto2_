@@ -1,5 +1,7 @@
 from Cliente import Cliente
 from NodeCliente import NodeCliente
+import os
+from graphviz import Digraph
 
 
 class ListaClientes:
@@ -145,5 +147,56 @@ class ListaClientes:
             if actual == self.__primero:
                 break
 
+    def mostrar_info_cliente(self, dpi_cliente):
+        if self.esta_vacia():
+            print("La lista esta vacia.")
+        else:
+            node_cliente: Cliente
+            actual = self.__primero
+            while True:
+                node_cliente = actual.get_cliente()
+                if node_cliente.get_dpi() == dpi_cliente:
+                    print(actual)
+                    return actual
+                actual = actual.get_siguiente()
+                if actual == self.__primero:
+                    break
+            return None
+
     def generar_reporte(self):
-        pass
+        # este metodo debe generar el archivo .dot y mostrar la grafica de la lista circular doblemente enlazada
+        # abrir automaticamente la imagen de la grafica creada.
+        if self.esta_vacia():
+            print("La lista está vacía. No se puede generar el reporte.")
+            return
+
+            # Crear el grafo
+        dot = Digraph(format='png')
+        dot.attr(rankdir='LR')  # Disposición horizontal
+        dot.attr('node', shape='record')
+
+        actual = self.__primero
+        while True:
+            cliente = actual.get_cliente()
+            node_id = f'node{cliente.get_dpi()}'
+            label = f'DPI: {cliente.get_dpi()}\\nNombre: {cliente.get_nombres()} {cliente.get_apellidos()}'
+            dot.node(node_id, label)
+
+            # Agregar las conexiones entre los nodos
+            siguiente = actual.get_siguiente()
+            anterior = actual.get_anterior()
+            siguiente_id = f'node{siguiente.get_cliente().get_dpi()}'
+            anterior_id = f'node{anterior.get_cliente().get_dpi()}'
+
+            # Conexión hacia el siguiente nodo
+            dot.edge(node_id, siguiente_id, dir='both')
+            actual = siguiente
+
+            # Ciclo completo
+            if actual == self.__primero:
+                break
+
+        # Guardar y renderizar el grafo
+        output_path = "reporte_lista_circular"
+        dot.render(output_path, view=True)
+        print(f"Reporte generado: {output_path}.png")

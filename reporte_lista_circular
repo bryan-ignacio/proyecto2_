@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR
+	node [shape=record]
+	node3284015629305 [label="DPI: 3284015629305\nNombre: Jorge Gómez"]
+	node3284015629305 -> node3059284736104 [dir=both]
+	node3059284736104 [label="DPI: 3059284736104\nNombre: Ana Martínez"]
+	node3059284736104 -> node3905617392403 [dir=both]
+	node3905617392403 [label="DPI: 3905617392403\nNombre: Carlos Hernández"]
+	node3905617392403 -> node3748291048602 [dir=both]
+	node3748291048602 [label="DPI: 3748291048602\nNombre: María López"]
+	node3748291048602 -> node3461925281601 [dir=both]
+	node3461925281601 [label="DPI: 3461925281601\nNombre: Bryan Cristhopher Ignacio Xoy"]
+	node3461925281601 -> node3284015629305 [dir=both]
+}
