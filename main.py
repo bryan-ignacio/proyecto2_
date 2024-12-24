@@ -4,48 +4,34 @@ from NodeCliente import NodeCliente
 from Vehiculo import Vehiculo
 
 if __name__ == '__main__':
-    c1 = Cliente("3461925281601",
-                 "Bryan Cristhopher",
-                 "Ignacio Xoy",
-                 "M",
-                 "30817780",
-                 "52 calle 16-00 zona 12")
-
-    c2 = Cliente("3748291048602",
-                 "María",
-                 "López",
-                 "F",
-                 "32017654",
-                 "Avenida Las Rosas 12-45 zona 5")
-
-    c3 = Cliente("3905617392403",
-                 "Carlos",
-                 "Hernández",
-                 "M",
-                 "31098765",
-                 "Boulevard Los Próceres 8-22 zona 10")
-
-    c4 = Cliente("3059284736104",
-                 "Ana",
-                 "Martínez",
-                 "F",
-                 "31987654",
-                 "Colonia El Prado 3-14 zona 7")
-
-    c5 = Cliente("3284015629305",
-                 "Jorge",
-                 "Gómez",
-                 "M",
-                 "32234567",
-                 "Residenciales Las Flores 2-18 zona 11")
 
     lista_clientes = ListaClientes()
-    lista_clientes.insertar_inicio(c1)
-    lista_clientes.insertar_inicio(c2)
-    lista_clientes.insertar_inicio(c3)
-    lista_clientes.insertar_inicio(c4)
-    lista_clientes.insertar_inicio(c5)
-    lista_clientes.imprimir()
-    lista_clientes.generar_reporte()
-    # node_encontado:NodeCliente = lista_clientes.mostrar_info_cliente("3748291048602")
-    # print(node_encontado.get_cliente())
+
+    ruta_archivo_clientes = "carga_clientes.txt"
+    exit = False
+    while exit == False:
+        print(f'''
+
+        LLEGADA RAPIDITO
+
+         1) Cargar Clientes.
+         2) Salir.
+          ''')
+        option = int(input("\t> Selecciona una opcion:"))
+        if option == 1:
+            archivo = open(ruta_archivo_clientes, 'r')
+            contenido_archivo = archivo.read()
+            # print(contenido_archivo)
+            particion_linea = contenido_archivo.split('\n')
+            # print(particion_linea)
+            for index in range(len(particion_linea)):
+                particion_comas = particion_linea[index].split(',')
+                lista_clientes.insertar_inicio(
+                    Cliente(particion_comas[0], particion_comas[1],
+                            particion_comas[2], particion_comas[3],
+                            particion_comas[4], particion_comas[5].strip(';')))
+            print("\n")
+            lista_clientes.generar_reporte()
+        elif option == 2:
+            print('Finalizo el programa.')
+            exit = True

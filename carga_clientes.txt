@@ -1,0 +1,10 @@
+1234567890101,Juan Carlos,Pérez Martínez,M,5551234567,Avenida Central #123 Ciudad de México;
+2345678901212,María Fernanda,Gómez López,F,5552345678,Calle Reforma #456 Monterrey;
+3456789012323,Carlos Eduardo,Ramírez Torres,M,5553456789,Colonia Centro #789 Guadalajara;
+4567890123434,Sofía Alejandra,López Hernández,F,5554567890,Residencial Vista #321 Puebla;
+5678901234545,Diego Armando,Cruz Sánchez,M,5555678901,Barrio Nuevo #654 Mérida;
+6789012345656,Valeria Beatriz,Morales Díaz,F,5556789012,Urbanización Lomas #987 Tijuana;
+7890123456767,Fernando Javier,Mendoza Ruiz,M,5557890123,Avenida Sur #234 Querétaro;
+8901234567878,Ana Paola,Castro Vega,F,5558901234,Calle del Sol #567 León;
+9012345678989,Ricardo José,Delgado Paredes,M,5559012345,Fraccionamiento Norte #890 Toluca;
+0123456789090,Isabel Cristina,Herrera Villanueva,F,5550123456,Bulevar Oriente #123 Chihuahua;
