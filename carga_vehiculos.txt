@@ -1,0 +1,10 @@
+P-123ABC:Toyota:Corolla:80000;
+P-456DEF:Nissan:Sentra:75000;
+P-789GHI:Hyundai:Elantra:78000;
+P-321JKL:Kia:Soul:72000;
+P-654MNO:Mazda:CX-5:120000;
+P-987PQR:Chevrolet:Spark:68000;
+P-741STU:Ford:Escape:95000;
+P-852VWX:Honda:Civic:90000;
+P-963YZA:Volkswagen:Jetta:88000;
+P-147BCD:Subaru:Outback:105000;
