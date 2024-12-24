@@ -103,10 +103,23 @@ class ListaClientes:
             self.__primero = temp
 
     def eliminar_final(self):
-        pass
+        if self.esta_vacia():
+            print("La lista esta vacia, no se puede eliminar")
+        elif self.__primero == self.__ultimo:
+            self.__primero = None
+            self.__ultimo = None
+        else:
+            temp: NodeCliente = self.__primero
+            while True:
+                if temp.get_siguiente() == self.__ultimo:
+                    temp.set_siguiente(self.__primero)
+                    self.__ultimo = temp
+                    break
+                temp = temp.get_siguiente()
+                if temp == self.__primero:
+                    break
 
     def eliminar_node_cliente(self):
-
         pass
 
     def generar_reporte(self):
