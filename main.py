@@ -139,7 +139,33 @@ if __name__ == '__main__':
                     print("Regresó al Menu principal.")
                     exit_clientes = True
         if option == 6:
-            print("Menu Vehiculos.")
+            exit_vehiculos = False
+            while exit_vehiculos == False:
+                print(f'''
+                --------------------
+                   MENU VEHICULOS
+                --------------------
+                1) Crear Vehiculo.
+                2) Modificar Vehiculo.
+                3) Eliminar Vehiculo.
+                4) Mostrar Informacion Vehiculo.
+                5) Generar Reporte Vehiculos.
+                6) Regresar.
+                ''')
+                option_vehiculos = int(input("\t> Selecciona una opcion:"))
+                if option_vehiculos == 1:
+                    print("Crear Vehiculo:")
+                if option_vehiculos == 2:
+                    print("Modificar Vehiculo:")
+                if option_vehiculos == 3:
+                    print("Eliminar Vehiculo:")
+                if option_vehiculos == 4:
+                    print("Mostrar Informacion Vehiculo:")
+                if option_vehiculos == 5:
+                    print("Generar Reporte Vehiculos:")
+                if option_vehiculos == 6:
+                    print("Regresó al Menu principal.")
+                    exit_vehiculos = True
         if option == 7:
             print("Menu Viajes.")
         elif option == 8:
