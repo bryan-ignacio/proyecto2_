@@ -55,6 +55,7 @@ if __name__ == '__main__':
             print("Carga Masiva De Rutas.")
             pass
         if option == 4:
+            print("Los Viajes se almacenaran en una Lista Simple.")
             pass
         elif option == 5:
             print('Finalizo el programa.')
