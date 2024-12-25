@@ -77,6 +77,9 @@ class ArbolBVehiculos:
         else:
             print(f"No se encontró un vehículo con la placa '{placa}'.")
 
+    def eliminar(self, placa: str):
+        pass
+
     def imprimir_usuario(self) -> str:
         dot: str = "digraph G {\n\t"
         # Cambiar el color de fondo del gráfico

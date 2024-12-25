@@ -175,7 +175,6 @@ if __name__ == '__main__':
                         print("No se pudo modificar, No existe Vehiculo")
                 if option_vehiculos == 3:
                     print("Eliminar Vehiculo:")
-
                 if option_vehiculos == 4:
                     print("Mostrar Informacion Vehiculo:")
                     in_placa = str(input(">Ingresa la PLACA del Vehiculo: "))
