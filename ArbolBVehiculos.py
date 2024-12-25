@@ -67,7 +67,7 @@ class ArbolBVehiculos:
         # Si llegamos aquí y no encontramos la placa
         return None
 
-    def modificar(self, placa: str, new_placa: str, new_marca: str, new_modelo: str, new_precio: float):
+    def modificar(self, placa: str, new_placa: str, new_marca: str, new_modelo: str, new_precio: str):
         vehiculo = self.buscar(placa)
         if vehiculo is not None:
             vehiculo.set_placa(new_placa)

@@ -95,7 +95,7 @@ if __name__ == '__main__':
                     if lista_clientes.buscar_node_cliente(in_dpi) is not None:
                         node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
                         print(node_cliente.get_cliente())
-                        print("Ingresa la Nueva Inforamcion del Cliente")
+                        print("Ingresa la Nueva Informacion del Cliente")
                         new_dpi = str(input(">Ingresa el DPI: "))
                         new_nombres = str(input(">Ingresa los Nombres: "))
                         new_apellidos = str(input(">Ingresa los Apellidos: "))
@@ -161,10 +161,23 @@ if __name__ == '__main__':
                     arbol_vehiculos.insertar_valor(Vehiculo(new_placa, new_marca, new_modelo, new_precio))
                 if option_vehiculos == 2:
                     print("Modificar Vehiculo:")
+                    in_vehiculo = str(input("\t>Ingresa la placa del vehiculo a Modificar: "))
+                    vehiculo = arbol_vehiculos.buscar(in_vehiculo)
+                    if vehiculo is not None:
+                        print(vehiculo)
+                        print("Ingresa la Nueva Informacion del Cliente")
+                        new_placa = str(input("\t>Ingresa la placa: "))
+                        new_marca = str(input("\t>Ingresa la marca: "))
+                        new_modelo = str(input("\t>Ingresa el modelo: "))
+                        new_precio = str(input("\t>Ingresa el precio: "))
+                        arbol_vehiculos.modificar(in_vehiculo,new_placa, new_marca, new_modelo, new_precio)
+                    else:
+                        print("No se pudo modificar, No existe Vehiculo")
                 if option_vehiculos == 3:
                     print("Eliminar Vehiculo:")
                 if option_vehiculos == 4:
                     print("Mostrar Informacion Vehiculo:")
+
                 if option_vehiculos == 5:
                     print("Generar Reporte Vehiculos:")
                     arbol_vehiculos.generar_reporte()
