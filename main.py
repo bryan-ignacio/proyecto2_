@@ -88,9 +88,25 @@ if __name__ == '__main__':
                     new_genero = str(input(">Ingresa el Genero: "))
                     new_telefono = str(input(">Ingresa el Telefono: "))
                     new_direccion = str(input(">Ingresa la Direccion: "))
-                    lista_clientes.insertar_inicio(Cliente(new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion))
+                    lista_clientes.insertar_inicio(
+                        Cliente(new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion))
                 if option_clientes == 2:
                     print("Modificar Cliente")
+                    in_dpi = str(input(">Ingresa el DPI a buscar: "))
+                    if lista_clientes.buscar_node_cliente(in_dpi) is not None:
+                        node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
+                        print(node_cliente.get_cliente())
+                        print("Ingresa la Nueva Inforamcion del Cliente")
+                        new_dpi = str(input(">Ingresa el DPI: "))
+                        new_nombres = str(input(">Ingresa los Nombres: "))
+                        new_apellidos = str(input(">Ingresa los Apellidos: "))
+                        new_genero = str(input(">Ingresa el Genero: "))
+                        new_telefono = str(input(">Ingresa el Telefono: "))
+                        new_direccion = str(input(">Ingrese la Direccion:"))
+                        lista_clientes.modificar_node_cliente(in_dpi, new_dpi, new_nombres, new_apellidos, new_genero,
+                                                              new_telefono, new_direccion)
+                    else:
+                        print("No se pudo modificar, No existe Cliente")
                 if option_clientes == 3:
                     print("Eliminar Cliente")
                 if option_clientes == 4:

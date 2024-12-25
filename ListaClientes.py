@@ -70,7 +70,7 @@ class ListaClientes:
             while True:
                 node_cliente = actual.get_cliente()
                 if node_cliente.get_dpi() == dpi_cliente:
-                    print("se encontro el cliente", node_cliente.get_dpi())
+                    # print("se encontro el cliente", node_cliente.get_dpi())
                     return actual
                 actual = actual.get_siguiente()
                 if actual == self.__primero:
