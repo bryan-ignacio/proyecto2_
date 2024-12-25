@@ -14,6 +14,9 @@ class Vehiculo:
     def get_marca(self):
         return self.__marca
 
+    def set_marca(self, marca):
+        self.__marca = marca
+
     def get_modelo(self):
         return self.__modelo
 

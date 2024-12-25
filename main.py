@@ -121,12 +121,12 @@ if __name__ == '__main__':
                     node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
                     if node_cliente is not None:
                         print("---------------------------------")
-                        print('dpi: ',node_cliente.get_cliente().get_dpi())
-                        print('nombres: ',node_cliente.get_cliente().get_nombres())
-                        print('apellidos: ',node_cliente.get_cliente().get_apellidos())
-                        print('genero: ',node_cliente.get_cliente().get_genero())
-                        print('telefono: ',node_cliente.get_cliente().get_telefono())
-                        print('direccion: ',node_cliente.get_cliente().get_direccion())
+                        print('dpi: ', node_cliente.get_cliente().get_dpi())
+                        print('nombres: ', node_cliente.get_cliente().get_nombres())
+                        print('apellidos: ', node_cliente.get_cliente().get_apellidos())
+                        print('genero: ', node_cliente.get_cliente().get_genero())
+                        print('telefono: ', node_cliente.get_cliente().get_telefono())
+                        print('direccion: ', node_cliente.get_cliente().get_direccion())
                         print("---------------------------------")
                     else:
                         print("No se puede mostrar informacion del cliente, no existe.")
@@ -154,6 +154,11 @@ if __name__ == '__main__':
                 option_vehiculos = int(input("\t> Selecciona una opcion:"))
                 if option_vehiculos == 1:
                     print("Crear Vehiculo:")
+                    new_placa = str(input("\t>Ingresa la placa: "))
+                    new_marca = str(input("\t>Ingresa la marca: "))
+                    new_modelo = str(input("\t>Ingresa el modelo: "))
+                    new_precio = str(input("\t>Ingresa el precio: "))
+                    arbol_vehiculos.insertar_valor(Vehiculo(new_placa, new_marca, new_modelo, new_precio))
                 if option_vehiculos == 2:
                     print("Modificar Vehiculo:")
                 if option_vehiculos == 3:

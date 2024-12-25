@@ -3,6 +3,7 @@ from Vehiculo import Vehiculo
 import os
 import subprocess
 
+
 class ArbolBVehiculos:
     def __init__(self, orden: int):
         self.raiz: NodeVehiculo = NodeVehiculo(True)
@@ -49,6 +50,32 @@ class ArbolBVehiculos:
         if not hijo.hoja:
             nodo.hijos = hijo.hijos[posicion_media + 1: posicion_media * 2 + 2]
             hijo.hijos = hijo.hijos[0:posicion_media + 1]
+
+    def buscar(self, placa: str, nodo: NodeVehiculo = None):
+        if nodo is None:
+            nodo = self.raiz
+        # Buscar la placa en las claves del nodo actual
+        for vehiculo in nodo.claves:
+            if vehiculo.get_placa() == placa:
+                return vehiculo
+        # Si no es una hoja, continuar buscando en los hijos correspondientes
+        if not nodo.hoja:
+            for i, vehiculo in enumerate(nodo.claves):
+                if placa < vehiculo.get_placa():
+                    return self.buscar(placa, nodo.hijos[i])
+            return self.buscar(placa, nodo.hijos[-1])
+        # Si llegamos aquí y no encontramos la placa
+        return None
+
+    def modificar(self, placa: str, new_placa: str, new_marca: str, new_modelo: str, new_precio: float):
+        vehiculo = self.buscar(placa)
+        if vehiculo is not None:
+            vehiculo.set_placa(new_placa)
+            vehiculo.set_marca(new_marca)
+            vehiculo.set_modelo(new_modelo)
+            vehiculo.set_precio(new_precio)
+        else:
+            print(f"No se encontró un vehículo con la placa '{placa}'.")
 
     def imprimir_usuario(self) -> str:
         dot: str = "digraph G {\n\t"
@@ -114,4 +141,3 @@ class ArbolBVehiculos:
                 subprocess.run(["open" if os.uname().sysname == "Darwin" else "xdg-open", image_file])
         except Exception as e:
             print(f"No se pudo abrir automáticamente la imagen: {e}")
-
