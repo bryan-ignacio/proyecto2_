@@ -1,6 +1,10 @@
 class Viaje:
+
+    contador_viajes = 0
+
     def __init__(self, origen, destino, fecha, cliente, vehiculo, ruta_tomada):
-        self.__id = 0
+        Viaje.contador_viajes += 1
+        self.__id = Viaje.contador_viajes
         self.__origen = origen
         self.__destino = destino
         self.__fecha = fecha
