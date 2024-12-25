@@ -40,7 +40,6 @@ if __name__ == '__main__':
                             particion_comas[2], particion_comas[3],
                             particion_comas[4], particion_comas[5].strip(';')))
             print("\n")
-            lista_clientes.generar_reporte()
         if option == 2:
             archivo_dos = open(ruta_archivo_vehiculos, 'r')
             contenido_archivo_dos = archivo_dos.read()
@@ -83,6 +82,13 @@ if __name__ == '__main__':
                 option_clientes = int(input("\t> Selecciona una opcion:"))
                 if option_clientes == 1:
                     print("Crear Cliente")
+                    new_dpi = str(input(">Ingresa el DPI: "))
+                    new_nombres = str(input(">Ingresa los Nombres: "))
+                    new_apellidos = str(input(">Ingresa los Apellidos: "))
+                    new_genero = str(input(">Ingresa el Genero: "))
+                    new_telefono = str(input(">Ingresa el Telefono: "))
+                    new_direccion = str(input(">Ingresa la Direccion: "))
+                    lista_clientes.insertar_inicio(Cliente(new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion))
                 if option_clientes == 2:
                     print("Modificar Cliente")
                 if option_clientes == 3:
@@ -91,6 +97,8 @@ if __name__ == '__main__':
                     print("Mostrar Informacion Cliente")
                 if option_clientes == 5:
                     print("Generar Reporte Clientes")
+                    lista_clientes.generar_reporte()
+                    print("Reporte: Lista Clientes Generado.")
                 elif option_clientes == 6:
                     print("Regresó al Menu principal.")
                     exit_clientes = True
