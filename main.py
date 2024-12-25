@@ -170,14 +170,25 @@ if __name__ == '__main__':
                         new_marca = str(input("\t>Ingresa la marca: "))
                         new_modelo = str(input("\t>Ingresa el modelo: "))
                         new_precio = str(input("\t>Ingresa el precio: "))
-                        arbol_vehiculos.modificar(in_vehiculo,new_placa, new_marca, new_modelo, new_precio)
+                        arbol_vehiculos.modificar(in_vehiculo, new_placa, new_marca, new_modelo, new_precio)
                     else:
                         print("No se pudo modificar, No existe Vehiculo")
                 if option_vehiculos == 3:
                     print("Eliminar Vehiculo:")
+
                 if option_vehiculos == 4:
                     print("Mostrar Informacion Vehiculo:")
-
+                    in_placa = str(input(">Ingresa la PLACA del Vehiculo: "))
+                    vehiculo = arbol_vehiculos.buscar(in_placa)
+                    if vehiculo is not None:
+                        print("---------------------------------")
+                        print("placa:", vehiculo.get_placa())
+                        print("marca:", vehiculo.get_marca())
+                        print("modelo:", vehiculo.get_modelo())
+                        print("precio:", vehiculo.get_precio())
+                        print("---------------------------------")
+                    else:
+                        print("No se puede mostrar informacion del Vehiculo, no existe.")
                 if option_vehiculos == 5:
                     print("Generar Reporte Vehiculos:")
                     arbol_vehiculos.generar_reporte()
