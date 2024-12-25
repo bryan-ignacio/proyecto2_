@@ -118,6 +118,19 @@ if __name__ == '__main__':
                         print("Este Cliente no se puede eliminar, no existe")
                 if option_clientes == 4:
                     print("Mostrar Informacion Cliente")
+                    in_dpi = str(input(">Ingresa el DPI del cliente: "))
+                    node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
+                    if node_cliente is not None:
+                        print("---------------------------------")
+                        print('dpi: ',node_cliente.get_cliente().get_dpi())
+                        print('nombres: ',node_cliente.get_cliente().get_nombres())
+                        print('apellidos: ',node_cliente.get_cliente().get_apellidos())
+                        print('genero: ',node_cliente.get_cliente().get_genero())
+                        print('telefono: ',node_cliente.get_cliente().get_telefono())
+                        print('direccion: ',node_cliente.get_cliente().get_direccion())
+                        print("---------------------------------")
+                    else:
+                        print("No se puede mostrar informacion del cliente, no existe.")
                 if option_clientes == 5:
                     print("Generar Reporte Clientes")
                     lista_clientes.generar_reporte()
