@@ -11,6 +11,7 @@ if __name__ == '__main__':
 
     ruta_archivo_clientes = "carga_clientes.txt"
     ruta_archivo_vehiculos = "carga_vehiculos.txt"
+    ruta_archivo_rutas = "carga_rutas.txt"
 
     exit = False
     while exit == False:
@@ -52,11 +53,16 @@ if __name__ == '__main__':
                 arbol_vehiculos.generar_reporte()
             print("\n")
         if option == 3:
-            print("Carga Masiva De Rutas.")
-            pass
+            archivo_tres = open(ruta_archivo_rutas, 'r')
+            contenido_archivo_tres = archivo_tres.read()
+            particion_linea_tres = contenido_archivo_tres.split('\n')
+            for index in range(len(particion_linea_tres)):
+                particion_diagonal = particion_linea_tres[index].split('/')
+                print(particion_diagonal[0])
+                print(particion_diagonal[1])
+                print(particion_diagonal[2].strip('%'))
         if option == 4:
             print("Los Viajes se almacenaran en una Lista Simple.")
-            pass
         elif option == 5:
             print('Finalizo el programa.')
             exit = True
