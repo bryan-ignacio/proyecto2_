@@ -52,8 +52,7 @@ if __name__ == '__main__':
                              particion_puntocoma[2],
                              particion_puntocoma[3].strip(';'))
                 )
-                arbol_vehiculos.generar_reporte()
-            print("\n")
+            print("datos cargados con exito...")
         if option == 3:
             archivo_tres = open(ruta_archivo_rutas, 'r')
             contenido_archivo_tres = archivo_tres.read()
@@ -163,6 +162,8 @@ if __name__ == '__main__':
                     print("Mostrar Informacion Vehiculo:")
                 if option_vehiculos == 5:
                     print("Generar Reporte Vehiculos:")
+                    arbol_vehiculos.generar_reporte()
+                    print("Reporte: Arbol Vehiculos Generado.")
                 if option_vehiculos == 6:
                     print("Regresó al Menu principal.")
                     exit_vehiculos = True

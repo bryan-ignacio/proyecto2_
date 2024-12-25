@@ -101,7 +101,7 @@ class ArbolBVehiculos:
         image_file = "arbol_b.png"
         try:
             subprocess.run(["dot", "-Tpng", dot_file, "-o", image_file], check=True)
-            print(f"Imagen del árbol B generada: {image_file}")
+            # print(f"Imagen del árbol B generada: {image_file}")
         except FileNotFoundError:
             print("Error: Asegúrate de tener Graphviz instalado y que el comando 'dot' esté disponible en tu sistema.")
             return
