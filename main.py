@@ -92,7 +92,7 @@ if __name__ == '__main__':
                         Cliente(new_dpi, new_nombres, new_apellidos, new_genero, new_telefono, new_direccion))
                 if option_clientes == 2:
                     print("Modificar Cliente")
-                    in_dpi = str(input(">Ingresa el DPI a buscar: "))
+                    in_dpi = str(input(">Ingresa el DPI a modificar: "))
                     if lista_clientes.buscar_node_cliente(in_dpi) is not None:
                         node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
                         print(node_cliente.get_cliente())
@@ -109,6 +109,13 @@ if __name__ == '__main__':
                         print("No se pudo modificar, No existe Cliente")
                 if option_clientes == 3:
                     print("Eliminar Cliente")
+                    in_dpi = str(input(">Ingresa el DPI a eliminar: "))
+                    if lista_clientes.buscar_node_cliente(in_dpi) is not None:
+                        node_cliente = lista_clientes.buscar_node_cliente(in_dpi)
+                        print(node_cliente.get_cliente())
+                        lista_clientes.eliminar_node_cliente(in_dpi)
+                    else:
+                        print("Este Cliente no se puede eliminar, no existe")
                 if option_clientes == 4:
                     print("Mostrar Informacion Cliente")
                 if option_clientes == 5:
