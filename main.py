@@ -16,14 +16,17 @@ if __name__ == '__main__':
     exit = False
     while exit == False:
         print(f'''
-
-        LLEGADA RAPIDITO
-
+        --------------------
+          LLEGADA RAPIDITO
+        --------------------
          1) Carga Masiva De Clientes.
          2) Carga Masiva De Vehiculos.
          3) Carga Masiva De Rutas.
          4) Implementacion Viajes.(Tarea)
-         5) Salir.
+         5) Menu Clientes.
+         6) Menu Vehiculos. 
+         7) Menu Viajes.
+         8) Salir.
           ''')
         option = int(input("\t> Selecciona una opcion:"))
         if option == 1:
@@ -63,6 +66,38 @@ if __name__ == '__main__':
                 print(particion_diagonal[2].strip('%'))
         if option == 4:
             print("Los Viajes se almacenaran en una Lista Simple.")
-        elif option == 5:
+        if option == 5:
+            exit_clientes = False
+            while exit_clientes == False:
+                print(f'''
+                --------------------
+                    MENU CLIENTES
+                --------------------
+                1) Crear Cliente.
+                2) Modificar Cliente.
+                3) Eliminar Cliente.
+                4) Mostrar Informacion Cliente.
+                5) Generar Reporte Clientes.
+                6) Regresar.
+                ''')
+                option_clientes = int(input("\t> Selecciona una opcion:"))
+                if option_clientes == 1:
+                    print("Crear Cliente")
+                if option_clientes == 2:
+                    print("Modificar Cliente")
+                if option_clientes == 3:
+                    print("Eliminar Cliente")
+                if option_clientes == 4:
+                    print("Mostrar Informacion Cliente")
+                if option_clientes == 5:
+                    print("Generar Reporte Clientes")
+                elif option_clientes == 6:
+                    print("Regresó al Menu principal.")
+                    exit_clientes = True
+        if option == 6:
+            print("Menu Vehiculos.")
+        if option == 7:
+            print("Menu Viajes.")
+        elif option == 8:
             print('Finalizo el programa.')
             exit = True
