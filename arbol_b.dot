@@ -3,6 +3,12 @@ digraph G {
 	fontcolor=black;
 	edge [fontcolor=white color="#FF6347"];
 	node [shape=record width=1.2 style=filled fillcolor="#bfdbf7" fontcolor=black color="#e1e5f2"];
-	n0[label="<f0>|P-123ABC|<f1>"];
+	n0[label="<f0>|P-456DEF|<f1>|P-741STU|<f2>"];
+	n0:f0 -> n1;
+	n1[label="<f0>|P-123ABC|<f1>|P-147BCD|<f2>|P-321JKL|<f3>"];
+	n0:f1 -> n2;
+	n2[label="<f0>|P-654MNO|<f1>"];
+	n0:f2 -> n3;
+	n3[label="<f0>|P-852VWX|<f1>|P-963YZA|<f2>|P-987PQR|<f3>"];
 	
 }

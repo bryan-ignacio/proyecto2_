@@ -175,6 +175,10 @@ if __name__ == '__main__':
                         print("No se pudo modificar, No existe Vehiculo")
                 if option_vehiculos == 3:
                     print("Eliminar Vehiculo:")
+                    in_placa = str(input("\t>Ingresa la placa del vehiculo a Eliminar: "))
+                    vehiculo = arbol_vehiculos.buscar(in_placa)
+                    arbol_vehiculos.eliminar(in_placa)
+                    print(f"Vehiculo Eliminado: {vehiculo}")
                 if option_vehiculos == 4:
                     print("Mostrar Informacion Vehiculo:")
                     in_placa = str(input(">Ingresa la PLACA del Vehiculo: "))
