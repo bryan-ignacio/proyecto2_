@@ -129,7 +129,7 @@ class ArbolBVehiculos:
         else:
             # Caso 2.3: Fusionar hijos y eliminar la clave
             self.fusionar(nodo, posicion)
-            self.eliminar_recursivo(hijo_izquierdo, placa)
+            self.eliminar_recursivo(hijo_izquierdo, nodo.claves[posicion].get_placa())
 
     def reestructurar(self, nodo: NodeVehiculo, posicion: int):
         hijo = nodo.hijos[posicion]

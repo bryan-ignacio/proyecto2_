@@ -6,6 +6,11 @@ class Vertice:
         self.valor: str = valor
         self.vecinos: Lista[Vertice] = Lista()
         self.peso: int = peso
+        self.peso_acumulado: int = 0
+        self.visitado: bool = False
+
+    def get_peso_acumulado(self, peso: int):
+        self.peso_acumulado += peso
 
     def __str__(self):
         aux = self.vecinos.cabeza
