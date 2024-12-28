@@ -63,7 +63,7 @@ if __name__ == '__main__':
             for index in range(len(particion_linea_tres)):
                 particion_diagonal = particion_linea_tres[index].split('/')
                 lista_rutas.insertar(Ruta(particion_diagonal[0], particion_diagonal[1], int(particion_diagonal[2].strip('%'))))
-            print(lista_rutas.imprimir())
+            lista_rutas.generar_reporte()
         if option == 4:
             print("Los Viajes se almacenaran en una Lista Simple.")
         if option == 5:
