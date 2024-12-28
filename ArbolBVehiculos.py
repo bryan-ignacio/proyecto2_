@@ -228,9 +228,9 @@ class ArbolBVehiculos:
             file.write(dot_content)
 
         # Paso 3: Generar la imagen usando Graphviz
-        image_file = "arbol_b.png"
+        image_file = "arbol_b.svg"
         try:
-            subprocess.run(["dot", "-Tpng", dot_file, "-o", image_file], check=True)
+            subprocess.run(["dot", "-Tsvg", dot_file, "-o", image_file], check=True)
             # print(f"Imagen del árbol B generada: {image_file}")
         except FileNotFoundError:
             print("Error: Asegúrate de tener Graphviz instalado y que el comando 'dot' esté disponible en tu sistema.")

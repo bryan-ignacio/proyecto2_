@@ -171,7 +171,7 @@ class ListaClientes:
             return
 
         # Crear el grafo
-        dot = Digraph(format='png')
+        dot = Digraph(format='svg')
 
         # Establecer la disposición horizontal
         dot.attr(rankdir='LR')
