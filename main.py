@@ -1,13 +1,16 @@
 from ArbolBVehiculos import ArbolBVehiculos
 from Cliente import Cliente
+from ListaAdyacencia import ListaAdyacencia
 from ListaClientes import ListaClientes
 from NodeCliente import NodeCliente
+from Ruta import Ruta
 from Vehiculo import Vehiculo
 
 if __name__ == '__main__':
 
     lista_clientes = ListaClientes()
     arbol_vehiculos = ArbolBVehiculos(5)
+    lista_rutas = ListaAdyacencia()
 
     ruta_archivo_clientes = "carga_clientes.txt"
     ruta_archivo_vehiculos = "carga_vehiculos.txt"
@@ -59,9 +62,8 @@ if __name__ == '__main__':
             particion_linea_tres = contenido_archivo_tres.split('\n')
             for index in range(len(particion_linea_tres)):
                 particion_diagonal = particion_linea_tres[index].split('/')
-                print(particion_diagonal[0])
-                print(particion_diagonal[1])
-                print(particion_diagonal[2].strip('%'))
+                lista_rutas.insertar(Ruta(particion_diagonal[0], particion_diagonal[1], int(particion_diagonal[2].strip('%'))))
+            print(lista_rutas.imprimir())
         if option == 4:
             print("Los Viajes se almacenaran en una Lista Simple.")
         if option == 5:
