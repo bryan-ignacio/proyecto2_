@@ -34,7 +34,7 @@ class ListaAdyacencia:
         # Paso 3: Generar la imagen usando Graphviz
         image_file = "lista_adyacencia.svg"
         try:
-            subprocess.run(["dot", "-Tsvg", dot_file, "-o", image_file], check=True)
+            subprocess.run(["neato", "-Tsvg", dot_file, "-o", image_file], check=True)
             # print(f"Imagen del árbol B generada: {image_file}")
         except FileNotFoundError:
             print("Error: Asegúrate de tener Graphviz instalado y que el comando 'dot' esté disponible en tu sistema.")
