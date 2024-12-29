@@ -52,5 +52,5 @@ class Viaje:
         self.__ruta_tomada = ruta_tomada
 
     def __str__(self):
-        return (f'Viaje->[id: {self.__id}, origen: {self.__origen}, destino: {self.__destino}, \n'
-                f'fecha: {self.__fecha}, cliente: {self.__cliente} vehiculo: {self.__vehiculo}, camino: {self.__ruta_tomada}]')
+        return (f'Viaje->[id: {self.__id}, origen: {self.__origen}, destino: {self.__destino}, fecha: {self.__fecha}\n'
+                f', cliente: {self.__cliente} vehiculo: {self.__vehiculo}, camino: {self.__ruta_tomada}]')
