@@ -8,19 +8,19 @@ from Vertice import Vertice
 
 class Viaje:
     def __init__(self, id: int, origen: str, destino: str, cliente: Cliente, vehiculo: Vehiculo):
-        self.__id: int = id
-        self.__origen: str = origen
-        self.__destino: str = destino
-        self.__cliente: Cliente = cliente
-        self.__vehiculo: Vehiculo = vehiculo
-        self.__ruta: Lista = Lista()
+        self.id: int = id
+        self.origen: str = origen
+        self.destino: str = destino
+        self.cliente: Cliente = cliente
+        self.vehiculo: Vehiculo = vehiculo
+        self.ruta: Lista = None
 
     def get_ruta(self, grafo: ListaAdyacencia):
-        self.__ruta = grafo.get_ruta(self.__origen, self.__destino)
+        self.ruta = grafo.get_ruta(self.origen, self.destino)
 
     def mostrar_ruta(self) -> str:
         ruta: str = ""
-        aux: NodeLL[Vertice] = self.__ruta.cabeza
+        aux: NodeLL[Vertice] = self.ruta.cabeza
         while aux is not None:
             if aux.valor.peso_acumulado == 0:
                 ruta += f"{aux.valor.valor}({aux.valor.peso_acumulado}) -> "
@@ -30,35 +30,9 @@ class Viaje:
             aux = aux.siguiente
         return ruta
 
-    def get_id(self):
-        return self.__id
-
-    def get_origen(self):
-        return self.__origen
-
-    def set_origen(self, origen):
-        self.__origen = origen
-
-    def get_destino(self):
-        return self.__destino
-
-    def set_destino(self, destino):
-        self.__destino = destino
-
-    def get_cliente(self):
-        return self.__cliente
-
-    def set_cliente(self, cliente):
-        self.__cliente = cliente
-
-    def get_vehiculo(self):
-        return self.__vehiculo
-
-    def set_vehiculo(self, vehiculo):
-        self.__vehiculo = vehiculo
 
 
     def __str__(self):
-        return (f'Viaje->[id: {self.__id}, origen: {self.__origen}, destino: {self.__destino}\n'
-                f', cliente: {self.__cliente} vehiculo: {self.__vehiculo}, camino: {self.__ruta}]')
+        return (f'Viaje->[id: {self.id}, origen: {self.origen}, destino: {self.destino}\n'
+                f', cliente: {self.cliente} vehiculo: {self.vehiculo}, camino: {self.ruta}]')
 

@@ -24,7 +24,7 @@ class ListaAdyacencia:
     def buscar_vertice(self, valor: str)->Vertice:
         aux:NodeLL[Vertice] = self.vertices.cabeza
         while aux is not None:
-            if aux.valor == valor:
+            if aux.valor.valor == valor:
                 return aux.valor
             aux = aux.siguiente
         return None
@@ -38,6 +38,7 @@ class ListaAdyacencia:
             print(f"La Ciudad: {origen} no existe.")
             return
         nodos.encolar(origen)
+
         resultado: Vertice = self.get_ruta_corta(destino, nodos_visitados, nodos)
         while resultado is not None:
             ruta.insertar_frente(resultado)
