@@ -3,6 +3,7 @@ from Cliente import Cliente
 from ListaAdyacencia import ListaAdyacencia
 from ListaClientes import ListaClientes
 from ListaViajes import ListaViajes
+from NodeCliente import NodeCliente
 from Ruta import Ruta
 from Vehiculo import Vehiculo
 from Viaje import Viaje
@@ -219,26 +220,33 @@ if __name__ == '__main__':
                 option_viajes = int(input("\t> Selecciona una opcion:"))
                 if option_viajes == 1:
                     print("Crear Viaje:")
+                    new_id = str(input("\t> Ingresa la id: "))
                     new_origen = str(input("\t>Ingresa el origen: "))
                     new_destino = str(input("\t>Ingresa el destino: "))
-                    new_fecha = str(input("\t>Ingresa la fecha: "))
-                    new_cliente = str(input("\t>Ingresa el dpi del Cliente a buscar: "))
-                    new_vehiculo = str(input("\t>Ingresa la placa del vehiculo a buscar: "))
-                    new_ruta = str(input("\t>Ingresa la ruta: "))
-                    lista_viajes.insertar_final(
-                        Viaje(new_origen, new_destino, new_fecha, new_cliente, new_vehiculo, new_ruta))
+                    dpi_cliente = str(input("\t>Ingresa el dpi del Cliente a buscar: "))
+                    node_cliente: NodeCliente = lista_clientes.buscar_node_cliente(dpi_cliente)
+                    if node_cliente is not None:
+                        print(node_cliente.get_cliente())
+                    placa_vehiculo = str(input("\t>Ingresa la placa del vehiculo a buscar: "))
+                    new_vehiculo: Vehiculo = arbol_vehiculos.buscar(placa_vehiculo)
+                    if new_vehiculo is not None:
+                        print(new_vehiculo)
+                    viaje = Viaje(new_origen, new_destino, node_cliente.get_cliente(), new_vehiculo)
+                    print(viaje)
+                    lista_viajes.insertar_final(viaje)
                 if option_viajes == 2:
                     print("Mostrar Informacion Viaje:")
                     in_id = str(input(">Ingresa el ID del Viaje: "))
                     viaje = lista_viajes.buscar(in_id)
                     if viaje is not None:
+                        viaje.datos_viaje()
                         print("---------------------------------")
+                        print("id: ", viaje.get_viaje().get_id())
                         print("origen:", viaje.get_viaje().get_origen())
                         print("destino:", viaje.get_viaje().get_destino())
-                        print("fecha:", viaje.get_viaje().get_fecha())
                         print("cliente:", viaje.get_viaje().get_cliente())
                         print("vehiculo:", viaje.get_viaje().get_vehiculo())
-                        print("ruta:", viaje.get_viaje().get_ruta_tomada())
+                        print("ruta:", viaje.get_viaje().get_ruta())
                         print("---------------------------------")
                     else:
                         print("No se puede mostrar informacion del Viaje, no existe.")

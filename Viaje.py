@@ -6,10 +6,8 @@ from Vehiculo import Vehiculo
 from Vertice import Vertice
 
 class Viaje:
-    contador_viajes = 0
-    def __init__(self, origen:str, destino:str, cliente: Cliente, vehiculo: Vehiculo):
-            Viaje.contador_viajes += 1
-            self.__id = Viaje.contador_viajes
+    def __init__(self, id: int, origen:str, destino:str, cliente: Cliente, vehiculo: Vehiculo):
+            self.__id = id
             self.__origen:str = origen
             self.__destino:str = destino
             self.__cliente:Cliente = cliente

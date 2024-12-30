@@ -10,24 +10,23 @@ class ListaViajes:
         aux: NodeViaje = self.cabeza
         if aux is None:
             aux = NodeViaje(
+                viaje.get_id(),
                 viaje.get_origen(),
                 viaje.get_destino(),
-                viaje.get_fecha(),
                 viaje.get_cliente(),
                 viaje.get_vehiculo(),
-                viaje.get_ruta_tomada()
             )
             self.cabeza = aux
             return self.cabeza
         while aux.siguiente is not None:
             aux = aux.siguiente
         aux.siguiente = NodeViaje(
+            viaje.get_id(),
             viaje.get_origen(),
             viaje.get_destino(),
-            viaje.get_fecha(),
             viaje.get_cliente(),
-            viaje.get_vehiculo(),
-            viaje.get_ruta_tomada())
+            viaje.get_vehiculo()
+            )
         return aux.siguiente
 
 
