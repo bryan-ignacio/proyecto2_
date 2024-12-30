@@ -42,9 +42,9 @@ if __name__ == '__main__':
             for index in range(len(particion_linea)):
                 particion_comas = particion_linea[index].split(',')
                 lista_clientes.insertar_inicio(
-                    Cliente(particion_comas[0], particion_comas[1],
-                            particion_comas[2], particion_comas[3],
-                            particion_comas[4], particion_comas[5].strip(';')))
+                    Cliente(particion_comas[0].strip(" "), particion_comas[1].strip(" "),
+                            particion_comas[2].strip(" "), particion_comas[3].strip(" "),
+                            particion_comas[4].strip(" "), particion_comas[5].strip(';')))
             print("datos Clientes cargados con exito...")
         if option == 2:
             archivo_dos = open(ruta_archivo_vehiculos, 'r')
@@ -234,19 +234,20 @@ if __name__ == '__main__':
                         print(new_vehiculo)
                     viaje = Viaje(new_id ,new_origen, new_destino, node_cliente.get_cliente(), new_vehiculo)
                     viaje.get_ruta(lista_rutas)
+                    print(viaje.mostrar_ruta())
                     lista_viajes.insertar_final(viaje)
                 if option_viajes == 2:
                     print("Mostrar Informacion Viaje:")
                     in_id = str(input(">Ingresa el ID del Viaje: "))
-                    viaje = lista_viajes.buscar(in_id)
-                    if viaje is not None:
+                    node_viaje = lista_viajes.buscar(in_id)
+                    if node_viaje is not None:
                         print("---------------------------------")
-                        print("id: ", viaje.get_viaje().get_id())
-                        print("origen:", viaje.get_viaje().get_origen())
-                        print("destino:", viaje.get_viaje().get_destino())
-                        print("cliente:", viaje.get_viaje().get_cliente())
-                        print("vehiculo:", viaje.get_viaje().get_vehiculo())
-                        print("ruta:", viaje.get_viaje().mostrar_ruta())
+                        print("id: ", node_viaje.get_viaje().id)
+                        print("origen:", node_viaje.get_viaje().origen)
+                        print("destino:", node_viaje.get_viaje().destino)
+                        print("cliente:", node_viaje.get_viaje().cliente)
+                        print("vehiculo:", node_viaje.get_viaje().vehiculo)
+                        print("ruta:", node_viaje.get_viaje().mostrar_ruta())
                         print("---------------------------------")
                     else:
                         print("No se puede mostrar informacion del Viaje, no existe.")

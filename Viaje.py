@@ -32,7 +32,7 @@ class Viaje:
 
 
 
-    def __str__(self):
-        return (f'Viaje->[id: {self.id}, origen: {self.origen}, destino: {self.destino}\n'
-                f', cliente: {self.cliente} vehiculo: {self.vehiculo}, camino: {self.ruta}]')
+    # def __str__(self):
+    #     return (f'Viaje->[id: {self.id}, origen: {self.origen}, destino: {self.destino}\n'
+    #             f', cliente: {self.cliente} vehiculo: {self.vehiculo}, camino: {self.ruta}]')
 
