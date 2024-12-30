@@ -3,7 +3,6 @@ from Cliente import Cliente
 from ListaAdyacencia import ListaAdyacencia
 from ListaClientes import ListaClientes
 from ListaViajes import ListaViajes
-from NodeCliente import NodeCliente
 from Ruta import Ruta
 from Vehiculo import Vehiculo
 from Viaje import Viaje

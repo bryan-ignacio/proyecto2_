@@ -1,78 +1,71 @@
 from Cola import Cola
 from Lista import Lista
 from Node import Node
+from NodeLL import NodeLL
 from Ruta import Ruta
 from Vertice import Vertice
+from copy import copy
 import os
 import subprocess
 
-
 class ListaAdyacencia:
     def __init__(self):
-        self.vertices: Lista = Lista()
-        self.ruta_corta: Lista[Vertice] = Lista()
+        self.vertices:Lista[Vertice] = Lista()
 
     def insertar(self, ruta: Ruta):
-
-        origen:Vertice = Vertice(ruta.get_origen())
-        destino:Vertice = Vertice(ruta.get_destino(), ruta.get_tiempo())
-
-        resultado = self.vertices.buscar(origen)
-
-        if resultado is not None:
-            resultado.valor.vecinos.insertar_final(destino)
-        else:
-            resultado = self.vertices.insertar_final(origen)
-            resultado.valor.vecinos.insertar_final(destino)
-
-    def obtener_ruta_corta(self, origen: str, destino: str):
-        cola_ruta: Cola = Cola()
-        nodo_origen:Node[Vertice] = self.vertices.buscar(Vertice(origen))
-        cola_ruta.encolar(nodo_origen.valor)
-        self.obtener_ruta_corta_recursiva(Vertice(destino), cola_ruta)
-
-
-    def obtener_ruta_corta_recursiva(self, destino: Vertice, cola_ruta: Cola):
-        nodo_origen: Node[Vertice] = cola_ruta.desencolar()
-        if nodo_origen is None:
-            print("La Ciudad de Origen no Existe.")
+        vertice: Vertice = self.buscar_vertice(ruta.get_origen())
+        if vertice is not None:
+            vertice.agregar_vecinos(ruta.get_destino(), ruta.get_tiempo())
             return
+        vertice = Vertice(ruta.get_origen())
+        vertice.agregar_vecinos(ruta.get_destino(), ruta.get_tiempo())
+        self.vertices.insertar_frente(vertice)
 
-        nodo_origen = self.vertices.buscar(nodo_origen.valor)
+    def buscar_vertice(self, valor: str)->Vertice:
+        aux:NodeLL[Vertice] = self.vertices.cabeza
+        while aux is not None:
+            if aux.valor == valor:
+                return aux.valor
+            aux = aux.siguiente
+        return None
 
-        self.ruta_corta.insertar_final(nodo_origen)
-        nodo_origen.valor.visitado = True
-        if nodo_origen.valor.valor == destino.valor:
-            #Ya encontramos el ultimo nodo.
+    def get_ruta(self, origen: str, destino: str)->Lista:
+        ruta:Lista[Vertice] = Lista()
+        nodos_visitados: Cola = Cola()
+        nodos: Cola = Cola()
+        origen:Vertice = copy(self.buscar_vertice(origen))
+        if origen is None:
+            print(f"La Ciudad: {origen} no existe.")
             return
+        nodos.encolar(origen)
+        resultado: Vertice = self.get_ruta_corta(destino, nodos_visitados, nodos)
+        while resultado is not None:
+            ruta.insertar_frente(resultado)
+            resultado = resultado.padre
+        return ruta
 
-        cabeza_vecinos: Node[Vertice] = nodo_origen.valor.vecinos.cabeza
+    def get_ruta_corta(self, destino: str, nodos_visitados: Cola, nodos: Cola)->Vertice:
+        origen: Vertice = nodos.desencolar().valor
+        if origen.valor == destino:
+            nodos_visitados.encolar(origen)
+            return origen
+        aux: Node[Vertice] = origen.vecinos.cabeza
+        while aux is not None:
+            if not self.esta_visitado(nodos_visitados, aux.valor):
+                peso:int = aux.valor.peso
+                vecino: Vertice = copy(self.buscar_vertice(aux.valor.valor))
+                vecino.peso = peso
+                vecino.set_peso_acumulado(origen.peso_acumulado + peso)
+                vecino.padre = origen
+                nodos.encolar(vecino)
+            aux = aux.siguiente
+        nodos.ordenar()
+        nodos_visitados.encolar(origen)
+        return self.get_ruta_corta(destino, nodos_visitados, nodos)
 
-        while cabeza_vecinos is not None:
-
-            nodo_vecino: Node[Vertice] = self.vertices.buscar(cabeza_vecinos.valor)
-
-            if not nodo_vecino.valor.visitado:
-                nodo_vecino.valor.get_peso_acumulado(cabeza_vecinos.valor.peso)
-                cola_ruta.encolar(nodo_vecino.valor)
-            cabeza_vecinos = cabeza_vecinos.sig
-        self.ordenar(cola_ruta)
-        self.obtener_ruta_corta_recursiva(destino, cola_ruta)
-
-
-    def ordenar(self, cola:Cola):
-        inicio: Node = cola.cabeza
-        aux: Vertice
-        while inicio is not None:
-            inicio_sig = inicio.sig
-            while inicio_sig is not None:
-                if inicio.valor.get_peso_acumulado() > inicio_sig.valor.get_peso_acumulado():
-                    aux = inicio_sig.valor
-                    inicio_sig.valor = inicio.valor
-                    inicio.valor = aux.valor
-                inicio_sig = inicio_sig.sig
-            inicio = inicio.sig
-
+    def esta_visitado(self, nodos_visitados: Cola, valor: Vertice)->bool:
+        resultado: Node = nodos_visitados.buscar(valor.valor)
+        return resultado is not None
 
     def generar_reporte(self):
         # Paso 1: Generar el contenido DOT
@@ -95,11 +88,10 @@ class ListaAdyacencia:
         try:
             if os.name == "nt":  # Windows
                 os.startfile(image_file)
-            elif os.name == "posix":  # macOS o Linux
+            elif os.name == "posix":
                 subprocess.run(["open" if os.uname().sysname == "Darwin" else "xdg-open", image_file])
         except Exception as e:
             print(f"No se pudo abrir automáticamente la imagen: {e}")
-
 
     def imprimir(self)->str:
         dot = 'digraph G {\n\tbgcolor="#1a1a1a"\n\tedge [arrowhead=none fontcolor=white color="#ff5400"];\n\t'
@@ -109,6 +101,6 @@ class ListaAdyacencia:
         while aux is not None:
             if aux is not None:
                 dot += str(aux.valor)
-            aux = aux.sig
+            aux = aux.siguiente
         dot += "}"
         return dot
