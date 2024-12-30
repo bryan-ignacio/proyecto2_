@@ -45,7 +45,7 @@ if __name__ == '__main__':
                     Cliente(particion_comas[0], particion_comas[1],
                             particion_comas[2], particion_comas[3],
                             particion_comas[4], particion_comas[5].strip(';')))
-            print("\n")
+            print("datos Clientes cargados con exito...")
         if option == 2:
             archivo_dos = open(ruta_archivo_vehiculos, 'r')
             contenido_archivo_dos = archivo_dos.read()
@@ -58,7 +58,7 @@ if __name__ == '__main__':
                              particion_puntocoma[2],
                              particion_puntocoma[3].strip(';'))
                 )
-            print("datos cargados con exito...")
+            print("datos Vehiculos cargados con exito...")
         if option == 3:
             archivo_tres = open(ruta_archivo_rutas, 'r')
             contenido_archivo_tres = archivo_tres.read()
@@ -67,6 +67,7 @@ if __name__ == '__main__':
                 particion_diagonal = particion_linea_tres[index].split('/')
                 lista_rutas.insertar(
                     Ruta(particion_diagonal[0], particion_diagonal[1], int(particion_diagonal[2].strip('%'))))
+            print("datos Rutas cargados con exito...")
             lista_rutas.generar_reporte()
         if option == 4:
             print("Los Viajes se almacenaran en una Lista Simple.")
@@ -220,7 +221,7 @@ if __name__ == '__main__':
                 option_viajes = int(input("\t> Selecciona una opcion:"))
                 if option_viajes == 1:
                     print("Crear Viaje:")
-                    new_id = str(input("\t> Ingresa la id: "))
+                    new_id = int(input("\t> Ingresa la id: "))
                     new_origen = str(input("\t>Ingresa el origen: "))
                     new_destino = str(input("\t>Ingresa el destino: "))
                     dpi_cliente = str(input("\t>Ingresa el dpi del Cliente a buscar: "))
@@ -231,22 +232,21 @@ if __name__ == '__main__':
                     new_vehiculo: Vehiculo = arbol_vehiculos.buscar(placa_vehiculo)
                     if new_vehiculo is not None:
                         print(new_vehiculo)
-                    viaje = Viaje(new_origen, new_destino, node_cliente.get_cliente(), new_vehiculo)
-                    print(viaje)
+                    viaje = Viaje(new_id ,new_origen, new_destino, node_cliente.get_cliente(), new_vehiculo)
+                    viaje.get_ruta(lista_rutas)
                     lista_viajes.insertar_final(viaje)
                 if option_viajes == 2:
                     print("Mostrar Informacion Viaje:")
                     in_id = str(input(">Ingresa el ID del Viaje: "))
                     viaje = lista_viajes.buscar(in_id)
                     if viaje is not None:
-                        viaje.datos_viaje()
                         print("---------------------------------")
                         print("id: ", viaje.get_viaje().get_id())
                         print("origen:", viaje.get_viaje().get_origen())
                         print("destino:", viaje.get_viaje().get_destino())
                         print("cliente:", viaje.get_viaje().get_cliente())
                         print("vehiculo:", viaje.get_viaje().get_vehiculo())
-                        print("ruta:", viaje.get_viaje().get_ruta())
+                        print("ruta:", viaje.get_viaje().mostrar_ruta())
                         print("---------------------------------")
                     else:
                         print("No se puede mostrar informacion del Viaje, no existe.")

@@ -35,7 +35,7 @@ class ListaViajes:
         if aux is None:
             return None
         while aux is not None:
-            if aux.get_viaje().get_id() == id_viaje:
+            if aux.get_viaje().get_id() == int(id_viaje):
                 return aux
             aux = aux.siguiente
         return None
