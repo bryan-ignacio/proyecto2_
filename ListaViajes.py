@@ -29,7 +29,6 @@ class ListaViajes:
             )
         return aux.siguiente
 
-
     def buscar(self, id_viaje) -> NodeViaje:
         aux: NodeViaje = self.cabeza
         if aux is None:
@@ -39,8 +38,6 @@ class ListaViajes:
                 return aux
             aux = aux.siguiente
         return None
-
-
 
     def imprimir(self):
         if self.cabeza is None:
@@ -79,19 +76,3 @@ class ListaViajes:
 
         # Abrir automáticamente la imagen generada
         open("ListaViajes.png")
-
-    # def eliminar_frente(self):
-    #     cabeza: Node = self.cabeza
-    #     if cabeza is not None:
-    #         self.cabeza = cabeza.sig
-    #         return self.cabeza
-
-    # def insertar_frente(self, valor) -> Node:
-    #     nuevo_nodo: Node = Node(valor)
-    #     if self.cabeza is None:
-    #         self.cabeza = nuevo_nodo
-    #         return self.cabeza
-    #     nuevo_nodo.sig = self.cabeza
-    #     self.cabeza = nuevo_nodo
-    #     return self.cabeza
-    #

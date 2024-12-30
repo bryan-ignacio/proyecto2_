@@ -28,11 +28,10 @@ if __name__ == '__main__':
          1) Carga Masiva De Clientes.
          2) Carga Masiva De Vehiculos.
          3) Carga Masiva De Rutas.
-         4) Implementacion Viajes.(Tarea)
-         5) Menu Clientes.
-         6) Menu Vehiculos. 
-         7) Menu Viajes.
-         8) Salir.
+         4) Menu Clientes.
+         5) Menu Vehiculos. 
+         6) Menu Viajes.
+         7) Salir.
           ''')
         option = int(input("\t> Selecciona una opcion:"))
         if option == 1:
@@ -70,8 +69,6 @@ if __name__ == '__main__':
             print("datos Rutas cargados con exito...")
             lista_rutas.generar_reporte()
         if option == 4:
-            print("Los Viajes se almacenaran en una Lista Simple.")
-        if option == 5:
             exit_clientes = False
             while exit_clientes == False:
                 print(f'''
@@ -144,7 +141,7 @@ if __name__ == '__main__':
                 elif option_clientes == 6:
                     print("Regresó al Menu principal.")
                     exit_clientes = True
-        if option == 6:
+        if option == 5:
             exit_vehiculos = False
             while exit_vehiculos == False:
                 print(f'''
@@ -206,7 +203,7 @@ if __name__ == '__main__':
                 if option_vehiculos == 6:
                     print("Regresó al Menu principal.")
                     exit_vehiculos = True
-        if option == 7:
+        if option == 6:
             exit_viajes = False
             while exit_viajes == False:
                 print(f'''
@@ -258,6 +255,6 @@ if __name__ == '__main__':
                 if option_viajes == 4:
                     print("Regresó al Menu Principal.")
                     exit_viajes = True
-        elif option == 8:
+        elif option == 7:
             print('Finalizo el programa.')
             exit = True
