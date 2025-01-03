@@ -10,22 +10,22 @@ class ListaViajes:
         aux: NodeViaje = self.cabeza
         if aux is None:
             aux = NodeViaje(
-                viaje.get_id(),
-                viaje.get_origen(),
-                viaje.get_destino(),
-                viaje.get_cliente(),
-                viaje.get_vehiculo(),
+                viaje.id,
+                viaje.origen,
+                viaje.destino,
+                viaje.cliente,
+                viaje.vehiculo,
             )
             self.cabeza = aux
             return self.cabeza
         while aux.siguiente is not None:
             aux = aux.siguiente
         aux.siguiente = NodeViaje(
-            viaje.get_id(),
-            viaje.get_origen(),
-            viaje.get_destino(),
-            viaje.get_cliente(),
-            viaje.get_vehiculo()
+            viaje.id,
+            viaje.origen,
+            viaje.destino,
+            viaje.cliente,
+            viaje.vehiculo,
             )
         return aux.siguiente
 
@@ -34,7 +34,7 @@ class ListaViajes:
         if aux is None:
             return None
         while aux is not None:
-            if aux.get_viaje().get_id() == int(id_viaje):
+            if aux.get_viaje().id == int(id_viaje):
                 return aux
             aux = aux.siguiente
         return None
@@ -61,12 +61,12 @@ class ListaViajes:
         while aux is not None:
             # Creación de un nodo para cada viaje
             viaje = aux.get_viaje()
-            node_label = f"ID: {viaje.get_id()}\\nOrigen: {viaje.get_origen()}\\nDestino: {viaje.get_destino()}"
-            dot.node(f"viaje_{viaje.get_id()}", node_label)
+            node_label = f"ID: {viaje.id}\\nOrigen: {viaje.origen}\\nDestino: {viaje.destino}"
+            dot.node(f"viaje_{viaje.id}", node_label)
 
             # Conexión al siguiente nodo si existe
             if aux.siguiente is not None:
-                dot.edge(f"viaje_{viaje.get_id()}", f"viaje_{aux.siguiente.get_viaje().get_id()}")
+                dot.edge(f"viaje_{viaje.id}", f"viaje_{aux.siguiente.get_viaje().id}")
 
             aux = aux.siguiente
 
